@@ -1,0 +1,45 @@
+\qecho Leonille Matunan
+\qecho
+\qecho #1
+\qecho 
+Select * from Room;
+\qecho
+\qecho #2
+\qecho
+/* Optional multi line comment
+still in comment
+*/
+SELECT Purpose, StartTime, Duration
+FROM Meeting, Employee, Attendees
+WHERE Employee.id = Attendees.employeeID AND Attendees.MeetingID =
+Meeting.ID
+AND Employee.name = 'Dan';
+\qecho
+\qecho #3
+\qecho 
+-- Show Department DB content
+SELECT * FROM department;
+\qecho
+\qecho #4
+\qecho
+-- Show Employees that are Software Developers -
+SELECT * FROM employee WHERE departmentid  = 1;
+\qecho
+\qecho #5
+\qecho
+SELECT * FROM attendees WHERE employeeid IN (10,12);
+\qecho
+\qecho #6
+\qecho
+-- Show which employees id are 10 and 12
+SELECT * FROM employee WHERE id IN (10,12);
+\qecho
+\qecho #7
+\qecho
+-- Show employees name and their phone numbers
+SELECT name, phone FROM employee;
+\qecho
+\qecho #8
+\qecho
+-- Select employees and show their department names
+SELECT employee.name, department.name AS department_name FROM employee JOIN department ON employee.departmentid = department.id;

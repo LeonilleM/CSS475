@@ -1,0 +1,139 @@
+Leonille Matunan
+
+#1
+
+ building | room_number 
+----------+-------------
+ A        | 101
+ B        | 101
+ A        | 102
+ B        | 102
+ A        | 103
+ A        | 104
+ B        | 104
+ B        | 201
+ B        | 202
+(9 rows)
+
+
+#2
+
+ building | roomnum | capacity 
+----------+---------+----------
+ A        | 101     |       10
+(1 row)
+
+
+#3
+
+ attendees 
+-----------
+ Albert
+ Alice
+ Mark
+ Martha
+(4 rows)
+
+
+#4
+
+      starttime      | duration | purpose 
+---------------------+----------+---------
+ 2018-03-04 09:30:00 | 00:45:00 | Staff
+ 2018-03-17 11:00:00 | 01:30:00 | Sales
+ 2018-03-18 09:30:00 | 00:45:00 | Staff
+(3 rows)
+
+
+#5
+
+      starttime      | duration |     purpose     | building | roomnum 
+---------------------+----------+-----------------+----------+---------
+ 2018-03-04 09:30:00 | 00:45:00 | Staff           | A        | 101
+ 2018-03-11 09:30:00 | 00:45:00 | Staff           | A        | 101
+ 2018-03-18 09:30:00 | 00:45:00 | Staff           | A        | 101
+ 2018-03-25 09:30:00 | 00:45:00 | Staff           | A        | 101
+ 2018-03-15 09:30:00 | 01:00:00 | Post Mortem     | B        | 201
+ 2018-03-07 11:30:00 | 01:30:00 | HR Presentation | B        | 202
+ 2018-03-09 09:30:00 | 01:00:00 | DB Issues       | B        | 201
+(7 rows)
+
+
+#6
+
+  name   | phone 
+---------+-------
+ Albert  | 7234
+ Alice   | 7233
+ Ariel   | 134
+ Dan     | 4501
+ Dave    | 7229
+ Jack    | 7230
+ James   | 7231
+ John    | 8314
+ Mark    | 7228
+ Martha  | 7232
+ Max     | 3261
+ Sarah   | 4592
+ Sarah   | 7227
+ Winston | 7248
+(14 rows)
+
+
+#7
+
+ creator_name |  purpose   | building | room_number | meetingreason |      starttime      | duration 
+--------------+------------+----------+-------------+---------------+---------------------+----------
+ Alice        | Staff      | A        | 101         | Staff         | 2018-03-25 09:30:00 | 00:45:00
+ Alice        | Staff      | A        | 101         | Staff         | 2018-03-18 09:30:00 | 00:45:00
+ Alice        | Staff      | A        | 101         | Staff         | 2018-03-11 09:30:00 | 00:45:00
+ Alice        | Team Build | A        | 102         | Team Build    | 2018-03-07 09:30:00 | 01:00:00
+ Alice        | Staff      | A        | 101         | Staff         | 2018-03-04 09:30:00 | 00:45:00
+(5 rows)
+
+
+#8
+
+   dept_name   | emp_name |     purpose     | building | roomnum 
+---------------+----------+-----------------+----------+---------
+ Software Dev  | Ariel    | HR Presentation | B        | 202
+ Software Dev  | James    | HR Presentation | B        | 202
+ Software Dev  | James    | Post Mortem     | B        | 201
+ Software Dev  | Sarah    | HR Presentation | B        | 202
+ Software Test | John     | HR Presentation | B        | 202
+ Software Test | Martha   | DB Issues       | B        | 201
+ Software Test | Martha   | HR Presentation | B        | 202
+ Software Test | Martha   | Post Mortem     | B        | 201
+ Software Test | Sarah    | HR Presentation | B        | 202
+(9 rows)
+
+
+#9
+
+ creator_name | homephone 
+--------------+-----------
+ Alice        | 341
+ Ariel        | 336
+ Dan          | 335
+ Jack         | 342
+ Winston      | 333
+(5 rows)
+
+
+#10
+
+ building | roomnum |      starttime      
+----------+---------+---------------------
+ A        | 103     | 2018-03-04 09:30:00
+ A        | 101     | 2018-03-04 09:30:00
+ A        | 102     | 2018-03-07 09:30:00
+ B        | 202     | 2018-03-07 11:30:00
+ B        | 201     | 2018-03-09 09:30:00
+ A        | 101     | 2018-03-11 09:30:00
+ B        | 201     | 2018-03-15 09:30:00
+ A        | 104     | 2018-03-17 11:00:00
+ A        | 103     | 2018-03-18 09:30:00
+ A        | 101     | 2018-03-18 09:30:00
+ A        | 101     | 2018-03-25 09:30:00
+(11 rows)
+

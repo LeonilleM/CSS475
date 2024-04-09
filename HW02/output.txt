@@ -1,0 +1,223 @@
+Leonille Matunan
+
+#1
+
+ building | num_meetings 
+----------+--------------
+ A        |           11
+ B        |            9
+(2 rows)
+
+
+#2
+
+ building | roomnumber | nummeetings 
+----------+------------+-------------
+ A        | 101        |           4
+ A        | 102        |           1
+ A        | 103        |           2
+ A        | 104        |           4
+ B        | 101        |           4
+ B        | 201        |           3
+ B        | 202        |           2
+(7 rows)
+
+
+#3
+
+ building | roomnumber | nummeetings 
+----------+------------+-------------
+ A        | 103        |           2
+ B        | 202        |           2
+ B        | 201        |           3
+ A        | 104        |           4
+ A        | 101        |           4
+ B        | 101        |           4
+(6 rows)
+
+
+#4
+
+     purpose     |      starttime      | num_attendees 
+-----------------+---------------------+---------------
+ Staff           | 2018-03-04 09:30:00 |             6
+ Staff           | 2018-03-04 09:30:00 |             6
+ Team Build      | 2018-03-07 09:30:00 |             6
+ HR Presentation | 2018-03-07 11:30:00 |            14
+ DB Issues       | 2018-03-09 09:30:00 |             4
+ Staff           | 2018-03-11 09:30:00 |             6
+ Post Mortem     | 2018-03-15 09:30:00 |             6
+ Post Mortem     | 2018-03-15 09:30:00 |             6
+ Sales           | 2018-03-17 11:00:00 |             3
+ Staff           | 2018-03-18 09:30:00 |             8
+ Staff           | 2018-03-18 09:30:00 |             7
+ Lunch           | 2018-03-21 12:00:00 |             6
+ Staff           | 2018-03-25 09:30:00 |             6
+ Lunch           | 2018-03-28 12:00:00 |             7
+ PlanningLunch   | 2018-03-28 12:00:00 |             7
+ Planning        | 2018-03-28 12:30:00 |             5
+ IT Planning     | 2018-03-28 14:00:00 |             7
+ Party           | 2018-03-28 14:00:00 |            15
+ Test Planning   | 2018-03-28 15:00:00 |             3
+ Lunch           | 2018-04-05 12:00:00 |             6
+(20 rows)
+
+
+#5
+
+     purpose     |      starttime      | count | seats_available 
+-----------------+---------------------+-------+-----------------
+ IT Planning     | 2018-03-28 14:00:00 |     7 |              -2
+ Post Mortem     | 2018-03-15 09:30:00 |     6 |              -1
+ Planning        | 2018-03-28 12:30:00 |     5 |               0
+ Sales           | 2018-03-17 11:00:00 |     3 |               2
+ Staff           | 2018-03-18 09:30:00 |     8 |               2
+ Staff           | 2018-03-04 09:30:00 |     6 |               4
+ Staff           | 2018-03-11 09:30:00 |     6 |               4
+ Staff           | 2018-03-25 09:30:00 |     6 |               4
+ Staff           | 2018-03-18 09:30:00 |     7 |              13
+ PlanningLunch   | 2018-03-28 12:00:00 |     7 |              13
+ Lunch           | 2018-03-28 12:00:00 |     7 |              13
+ Staff           | 2018-03-04 09:30:00 |     6 |              14
+ Lunch           | 2018-03-21 12:00:00 |     6 |              14
+ Lunch           | 2018-04-05 12:00:00 |     6 |              14
+ HR Presentation | 2018-03-07 11:30:00 |    14 |              16
+ Team Build      | 2018-03-07 09:30:00 |     6 |              24
+ Test Planning   | 2018-03-28 15:00:00 |     3 |              27
+ DB Issues       | 2018-03-09 09:30:00 |     4 |                
+ Post Mortem     | 2018-03-15 09:30:00 |     6 |                
+ Party           | 2018-03-28 14:00:00 |    15 |                
+(20 rows)
+
+
+#6
+
+ employeenum | moderator |     purpose     
+-------------+-----------+-----------------
+ A000000002  | Alice     | Staff
+ A000000003  | Albert    | Post Mortem
+ A000000003  | Albert    | Team Build
+ D000000001  | Dan       | DB Issues
+ J000000002  | Jack      | HR Presentation
+ M000000001  | Max       | PlanningLunch
+ M000000001  | Max       | Sales
+ M000000001  | Max       | Staff
+ S000000002  | Sarah     | Test Planning
+(9 rows)
+
+
+#7
+
+ Employee Name | Num Created 
+---------------+-------------
+ Alice         |           1
+ Alice         |           8
+ Dan           |           6
+ Jack          |           1
+ Winston       |           4
+(5 rows)
+
+
+#8
+
+ moderator | nummeetings 
+-----------+-------------
+ Albert    |           3
+ Alice     |           4
+ Dan       |           1
+ Jack      |           1
+ Max       |           4
+ Sarah     |           1
+(6 rows)
+
+
+#9
+
+ employeenum |  name   | count 
+-------------+---------+-------
+ A000000001  | Alice   |    11
+ A000000002  | Alice   |     9
+ A000000003  | Albert  |    11
+ D000000001  | Dan     |     7
+ D000000002  | Dave    |    14
+ J000000001  | John    |     7
+ J000000002  | Jack    |    11
+ J000000003  | John    |     9
+ M000000001  | Max     |     8
+ M000000002  | Mark    |     8
+ M000000002  | Martha  |     9
+ S000000001  | Sarah   |     8
+ S000000001  | Stan    |     5
+ S000000002  | Sarah   |    10
+ W000000001  | Winston |     7
+(15 rows)
+
+
+#10
+
+ employeenum |  name   | totalduration 
+-------------+---------+---------------
+ A000000001  | Alice   | 14:30:00
+ A000000002  | Alice   | 11:30:00
+ A000000003  | Albert  | 13:30:00
+ D000000001  | Dan     | 10:00:00
+ D000000002  | Dave    | 18:00:00
+ J000000001  | John    | 10:00:00
+ J000000002  | Jack    | 13:30:00
+ J000000003  | John    | 12:00:00
+ M000000001  | Max     | 11:30:00
+ M000000002  | Mark    | 11:30:00
+ M000000002  | Martha  | 11:30:00
+ S000000001  | Sarah   | 11:00:00
+ S000000001  | Stan    | 07:30:00
+ S000000002  | Sarah   | 14:00:00
+ W000000001  | Winston | 10:00:00
+(15 rows)
+
+#11
+
+ category | count 
+----------+-------
+ Cell     |    10
+ Home     |     8
+ Pager    |     3
+ Work     |    15
+(4 rows)
+
+
+#12
+
+ attendee | cell_number 
+----------+-------------
+ Albert   | 134-4567
+ Alice    | 126-5678
+ Dave     | 127-7890
+ Jack     | 128-6789
+(4 rows)
+
+
+#13
+
+ attendee |       email       
+----------+-------------------
+ Albert   | albart1@bigco.com
+ Alice    | alice1@bigco.com
+ Dave     | dave1@bigco.com
+ Jack     | jack1@bigco.com
+ Mark     | mark1@bigco.com
+ Sarah    | sarah1@bigco.com
+ Stan     | stan1@bigco.com
+(7 rows)
+
+
+#14
+
+      name      | numEmployees | totalSalary 
+----------------+--------------+-------------
+ Administration |            2 |      145000
+ Marketing      |            1 |       80000
+ Sales          |            2 |      132000
+ Software Dev   |            8 |      982000
+ Software Test  |            2 |      208000
+(5 rows)
+
