@@ -206,8 +206,7 @@ WHERE
     meeting.purpose = 'Lunch'
     AND meeting.starttime = '2018-03-28 12:00:00'
 ORDER BY
-    attendee,
-    cell_number;
+    attendee;
 
 \qecho
 \qecho #13
@@ -224,7 +223,6 @@ WHERE
     meeting.purpose = 'Lunch'
     AND meeting.starttime = '2018-03-28 12:00:00'
 ORDER BY
-    attendee,
     email;
 
 \qecho

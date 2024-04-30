@@ -41,7 +41,7 @@ ORDER BY
 SELECT
     room.building,
     room.roomNumber,
-    COALESCE(CAST(capacity AS varchar), 'unknown') AS numseats
+    COALESCE(capacity::varchar, 'unknown') AS numseats
 FROM
     room
 ORDER BY
@@ -93,7 +93,7 @@ SELECT
 FROM
     meeting
 WHERE
-    meeting.starttime::time BETWEEN '10:30:00' AND '14:00:00'
+    meeting.starttime::time BETWEEN '10:30:00' AND '13:00:00'
 ORDER BY
     meeting.id;
 
@@ -163,7 +163,7 @@ WHERE
 /* Find all employees who are double booked at 2018-03-18 at 10:00 Order by EmployeeNum Columns names: employeenum, ‘numDouble’ ( where numDouble are the num meetings )*/
 SELECT
     employeeNum,
-    COUNT(attendees.meetingid) AS numDouble
+    COUNT(attendees.meetingid) AS "numDouble"
 FROM
     employee
     JOIN attendees ON employee.id = attendees.employeeid
