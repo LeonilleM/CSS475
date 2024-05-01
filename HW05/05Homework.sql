@@ -127,22 +127,20 @@ FROM (
 
 /* 5 – Find the average room utilization for all meetings occurring on 2018-03-04 at 10:00 AM . Express
 the utilization as a percentage value which is ‘total number of rooms with meeting’ / ‘total number of
-rooms’
+rooms
 Column Names: Util in % */
 \qecho
 \qecho #5
 \qecho
 SELECT
-    COUNT(DISTINCT meeting.roomid) * 100.0 / COUNT(DISTINCT room.id) AS "Util in %"
-FROM (
-    SELECT
-        room.id
-    FROM
-        room
-        JOIN meeting ON room.id = meeting.roomid
-    WHERE
-        meeting.starttime = '2018-03-04 10:00:00' AS subquery_alias);
-
+    ROUND((COUNT(DISTINCT m.roomId) * 100.0) / COUNT(DISTINCT r.Id)) AS "Util in %"
+FROM
+    Room r
+    LEFT JOIN Meeting m ON r.Id = m.roomId
+        AND m.startTime <= TIMESTAMP '2018-03-04 10:00:00'
+        AND (m.startTime + m.duration) > TIMESTAMP '2018-03-04 10:00:00'
+        AND m.startTime::date = '2018-03-04';
+-- Ensures the meeting is on the specified date
 /* 6 – Find the number of employees we have for each phone type. ( Cell, Home etc)
 Column Names: category, num_employees
 Order By :category
@@ -150,6 +148,18 @@ Order By :category
 \qecho
 \qecho #6
 \qecho
+SELECT
+    phonetype.name AS "category",
+    COUNT(DISTINCT employee.id) AS "num_employees" -- Distinct, only count once per employee
+FROM
+    employee
+    JOIN phone ON employee.id = phone.employeeid
+    JOIN phonetype ON phone.phonetypeid = phonetype.id
+GROUP BY
+    category
+ORDER BY
+    category;
+
 /* b7 – Find the number of phone listings we have for each phone type ( Cell, Home, etc)
 Column Names: category, num_listings
 Order By category
@@ -158,21 +168,89 @@ The same type – under 6 it would increase the count by 1. In #7 it would incre
 \qecho
 \qecho #7
 \qecho
+SELECT
+    phonetype.name AS "category",
+    COUNT(phone.id) AS "num_listings" -- Counting each phone entry individually
+FROM
+    phonetype
+    JOIN phone ON phonetype.id = phone.phonetypeid
+GROUP BY
+    category
+ORDER BY
+    category;
+
 /* 8 – Find the number of cell phones in each meeting that takes place in building B
 Column Names: meetingid, purpose, num_cell_phones
 Order By meetingid */
 \qecho
 \qecho #8
 \qecho
+SELECT
+    meeting.id AS "meetingid",
+    meeting.purpose,
+    COUNT(phone.id) AS "num_cell_phones"
+FROM
+    meeting
+    JOIN room ON meeting.roomid = room.id
+    JOIN attendees ON meeting.id = attendees.meetingid
+    JOIN employee ON attendees.employeeid = employee.id
+    JOIN phone ON employee.id = phone.employeeid
+    JOIN phonetype ON phone.phonetypeid = phonetype.id
+WHERE
+    room.building = 'B'
+    AND phonetype.name = 'Cell'
+GROUP BY
+    meeting.id,
+    meeting.purpose
+ORDER BY
+    meeting.id;
+
 /* 9 – Find the average number of cell phones for all meetings in building B Display answer to two decimal
 places ( assume employees always have cell phones with them)
 Column Names: avg_phones */
 \qecho
 \qecho #9
 \qecho
+SELECT
+    ROUND(AVG(cell_phone_count), 2) AS avg_phones
+FROM (
+    SELECT
+        m.Id AS meeting_id,
+        COUNT(p.ID) AS cell_phone_count
+    FROM
+        Meeting m
+        JOIN Room r ON m.roomId = r.Id
+        JOIN Attendees a ON m.Id = a.meetingId
+        JOIN Phone p ON a.employeeId = p.EmployeeID
+            AND p.PhoneTypeID = 'C'
+    WHERE
+        r.building = 'B'
+    GROUP BY
+        m.Id) AS meeting_cell_phones;
+
 /* 10 – Find the average time spent by employees in meeting for each department
 Column Names: department_name, avg_time
 Order By purpose, department_name */
 \qecho
 \qecho #10
 \qecho
+SELECT
+    d.name AS department_name,
+    TO_CHAR(AVG(sub.total_duration) * INTERVAL '1 second', 'HH24:MI:SS.US') AS avg_time
+FROM
+    Department d
+    JOIN (
+        SELECT
+            e.departmentid,
+            SUM(EXTRACT(EPOCH FROM m.duration)) AS total_duration -- Summing the duration in seconds for each meeting
+        FROM
+            Employee e
+            JOIN Attendees a ON e.id = a.employeeid
+            JOIN Meeting m ON a.meetingid = m.id
+        GROUP BY
+            e.departmentid,
+            a.meetingid) sub ON d.id = sub.departmentid -- Joining the subquery on department id
+GROUP BY
+    d.name
+ORDER BY
+    d.name;
