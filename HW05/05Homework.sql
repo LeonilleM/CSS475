@@ -122,7 +122,6 @@ FROM (
         COUNT(attendees.meetingid) DESC,
         name) AS subquery_alias;
 
-
 /* 5 – Find the average room utilization for all meetings occurring on 2018-03-04 at 10:00 AM . Express
 the utilization as a percentage value which is ‘total number of rooms with meeting’ / ‘total number of
 rooms
@@ -158,7 +157,6 @@ GROUP BY
     category
 ORDER BY
     category;
-
 
 /* b7 – Find the number of phone listings we have for each phone type ( Cell, Home, etc)
 Column Names: category, num_listings
