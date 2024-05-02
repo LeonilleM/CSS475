@@ -1,0 +1,110 @@
+Leonille Matunan
+
+#1
+
+ dept_id | num_meetings 
+---------+--------------
+       1 |           18
+       2 |           14
+       3 |           11
+       4 |           19
+       5 |           14
+(5 rows)
+
+
+#2
+
+ id |  name   | attendees | capacity | availseats 
+----+---------+-----------+----------+------------
+ 11 | Jack    |        14 |       30 |         16
+  5 | Dan     |        42 |       45 |         24
+  3 | Winston |        23 |       65 |         42
+ 14 | Alice   |        51 |      130 |         79
+  6 | Alice   |         4 |          |           
+(5 rows)
+
+
+#3
+
+ name | nummeetings | 75Percent 
+------+-------------+-----------
+ Dave |          14 |     10.50
+(1 row)
+
+
+#4
+
+  name  | nummeetings 
+--------+-------------
+ Dave   |          14
+ Albert |          11
+ Alice  |          11
+ Jack   |          11
+(4 rows)
+
+
+#5
+
+ Util in % 
+-----------
+        22
+(1 row)
+
+
+#6
+
+ category | num_employees 
+----------+---------------
+ Cell     |            10
+ Home     |             7
+ Pager    |             3
+ Work     |            15
+(4 rows)
+
+
+#7
+
+ category | num_listings 
+----------+--------------
+ Cell     |           10
+ Home     |            8
+ Pager    |            3
+ Work     |           15
+(4 rows)
+
+
+#8
+
+ meetingid |     purpose     | num_cell_phones 
+-----------+-----------------+-----------------
+       108 | DB Issues       |               3
+       109 | Post Mortem     |               6
+       110 | HR Presentation |               9
+       112 | Lunch           |               3
+       113 | Lunch           |               4
+       114 | Lunch           |               3
+       115 | PlanningLunch   |               5
+       119 | Test Planning   |               1
+       120 | Party           |              10
+(9 rows)
+
+
+#9
+
+ avg_phones 
+------------
+       4.89
+(1 row)
+
+
+#10
+
+ department_name |    avg_time     
+-----------------+-----------------
+ Administration  | 01:28:25.263158
+ Marketing       | 01:13:38.181818
+ Sales           | 01:38:34.285714
+ Software Dev    | 04:50:00.000000
+ Software Test   | 02:02:08.571429
+(5 rows)
+
