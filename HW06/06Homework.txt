@@ -61,6 +61,8 @@ WHERE
     AND book.liblocationid IS NULL;
 
 /* #2– Check in the book you checked out in #1 */
+\qecho # 2
+-- Query below
 UPDATE
     corecord
 SET
@@ -84,26 +86,17 @@ WHERE
 UPDATE
     book
 SET
-    liblocationid =(
-        SELECT
-            id
-        FROM
-            liblocation
-        WHERE
-            name = 'In Checkin Cart') -- or set it to the default location if 'NULL' is not appropriate
+    liblocationid = 5 -- Location IS 'In Checkin Cart'
 WHERE
     barcode = '0737494331';
--- Ensures only records without a check-in date are updated
-\qecho #2
--- Query below
-\qecho 
-\qecho Check #2
-SELECT
-    count(*) AS numincart
-FROM
-    book
-WHERE
-    book.liblocationid = 5;
+    \qecho 
+    \qecho Check #2
+    SELECT
+        count(*) AS numincart
+    FROM
+        book
+    WHERE
+        book.liblocationid = 5;
 SELECT
     count(*) AS numCheckedOut
 FROM
@@ -179,6 +172,7 @@ DELETE FROM book
 WHERE bookcatid = 576;
 DELETE FROM bookcat
 WHERE id = 576;
+\qecho
 \qecho Check #4
 SELECT
     count(*) AS numcat
@@ -224,6 +218,14 @@ INSERT INTO customer(firstname, lastname, email, address1, city, stateid, postal
         TRUE
     FROM
         inserted_customer;
+SELECT
+    id
+FROM
+    customer
+WHERE
+    firstName = 'George'
+    AND lastName = 'Spelvin';
+\qecho
 \qecho Check #5
 SELECT
     *
@@ -411,6 +413,7 @@ WHERE
             liblocation
         WHERE
             name = 'In Checkin Cart');
+\qecho
 \qecho Check #9
 SELECT
     count(*) AS NumInRepair
